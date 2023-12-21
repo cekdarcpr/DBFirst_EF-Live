@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DBFirst_EF.Models.Territory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Territory Listesi</h1>
+
+<p>
+    <a asp-action="Create">Yeni Kayıt</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Alt Bölge Tanımı
+                @* @Html.DisplayNameFor(model => model.TerritoryDescription) *@
+            </th>
+            <th>
+                Bölge Tanımı
+                @* @Html.DisplayNameFor(model => model.Region) *@
+            </th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TerritoryDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.RegionDescription)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TerritoryId">Güncelle</a> |
+                <a asp-action="Details" asp-route-id="@item.TerritoryId">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.TerritoryId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
